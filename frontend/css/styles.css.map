@@ -1,0 +1,14 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "styles.scss",
+        "Base/_base.scss",
+        "Base/_police.scss",
+        "Layouts/_footer.scss",
+        "Layouts/_header.scss",
+        "Pages/_index.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}
