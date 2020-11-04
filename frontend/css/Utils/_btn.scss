@@ -1,0 +1,17 @@
+/* Bouton envoyer du formulaire */ 
+
+.btn {
+    width: 40%;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    background-color: #4a69bd;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0c2461;
+}

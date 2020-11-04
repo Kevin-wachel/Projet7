@@ -1,1 +1,171 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap");
+* {
+  font-family: 'Merriweather', serif;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Partie Footer */
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: #227093;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 1.1rem;
+}
+
+footer a {
+  color: #e66767;
+}
+
+header {
+  height: 100px;
+  width: 100%;
+  background-color: #227093;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.logo {
+  height: 100%;
+  width: 200px;
+}
+
+/* */
+/* Partie se connecter */
+.form_connect {
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background-color: #FFF;
+  -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+          box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.form_connect h2 {
+  padding-top: 20px;
+}
+
+.form_connect h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #4a69bd;
+  margin-top: 30px;
+}
+
+/* Partie s'inscrire */
+.form {
+  width: 300px;
+  height: 550px;
+  margin: 30px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background-color: #FFF;
+  -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+          box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.form h2 {
+  padding-top: 20px;
+}
+
+.form h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #4a69bd;
+  margin-top: 30px;
+}
+
+.field {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 8px;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-color: rgba(230, 230, 230, 0.6);
+  font-size: 1.1rem;
+  margin: 5px auto 15px auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.field:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.field:focus {
+  background-color: #FFF;
+  border: 2px solid rgba(30, 85, 250, 0.47);
+}
+
+@media (min-width: 700px) {
+  .form, .form_connect {
+    width: 550px;
+  }
+  .field {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form, .form_connect {
+    width: 650px;
+  }
+  .field {
+    width: 75%;
+  }
+}
+
+/* Bouton envoyer du formulaire */
+.btn {
+  width: 40%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: #4a69bd;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #0c2461;
+}
+/*# sourceMappingURL=styles.css.map */

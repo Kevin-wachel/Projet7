@@ -1,0 +1,97 @@
+/* */
+
+
+
+/* Partie se connecter */
+
+.form_connect {   
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #FFF;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    h2 {
+        padding-top: 20px;
+    }
+    h2::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 4px;
+        width: 50px;
+        border-radius: 2px;
+        background-color: #4a69bd;
+        margin-top: 30px;
+    }
+}
+
+/* Partie s'inscrire */
+
+.form {   
+    width: 300px;
+    height: 550px;
+    margin: 30px auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #FFF;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    h2 {
+        padding-top: 20px;
+    }
+    h2::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 4px;
+        width: 50px;
+        border-radius: 2px;
+        background-color: #4a69bd;
+        margin-top: 30px;
+    }
+}
+
+.field {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(230, 230, 230, 0.6);
+    font-size: 1.1rem;
+    margin: 5px auto 15px auto;
+    transition: 0.3s;
+}
+
+.field:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.field:focus {
+    background-color: #FFF;
+    border: 2px solid rgba(30, 85, 250, 0.47);
+}
+
+@media (min-width: 700px) {
+    .form, .form_connect {   
+        width: 550px;
+    }
+    .field {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .form, .form_connect {   
+        width: 650px;
+    }
+    .field {
+        width: 75%;
+    }
+}
