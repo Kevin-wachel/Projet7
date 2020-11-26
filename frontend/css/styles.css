@@ -14,8 +14,22 @@ footer {
   width: 100%;
   background-color: #227093;
   text-align: center;
-  padding-top: 5px;
-  font-size: 1.1rem;
+  padding-top: 15px;
+  font-size: 1.2rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer i {
+  font-size: 30px;
 }
 
 footer a {
@@ -29,6 +43,23 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header ul {
+  list-style: none;
+}
+
+header li {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+header i {
+  font-size: 40px;
+  padding-top: 15px;
 }
 
 .logo {
@@ -37,6 +68,11 @@ header {
 }
 
 /* */
+h1 {
+  text-align: center;
+  font-size: 2.1rem;
+}
+
 /* Partie se connecter */
 .form_connect {
   width: 300px;
@@ -151,6 +187,103 @@ header {
   }
 }
 
+/* Partie photo utilisateur */
+.img_utilisateur {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* Partie information utilisateur */
+.info_utilisateur {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Partie messages */
+.message_utilisateur {
+  width: 600px;
+  height: 300px;
+  margin: 30px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background-color: #FFF;
+  -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+          box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.message_utilisateur .votre_titre {
+  padding-top: 10px;
+}
+
+.titre_msg_field {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 8px;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-color: rgba(230, 230, 230, 0.6);
+  margin: 5px auto 15px auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.titre_msg_field:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.titre_msg_field:focus {
+  background-color: #FFF;
+  border: 2px solid rgba(30, 85, 250, 0.47);
+}
+
+.msg_field {
+  width: 70%;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 8px;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-color: rgba(230, 230, 230, 0.6);
+  margin: 5px auto 15px auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.msg_field:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.msg_field:focus {
+  background-color: #FFF;
+  border: 2px solid rgba(30, 85, 250, 0.47);
+}
+
+/* */
 /* Bouton envoyer du formulaire */
 .btn {
   width: 40%;
@@ -167,5 +300,39 @@ header {
 
 .btn:hover {
   background-color: #0c2461;
+}
+
+.btn_ajouter {
+  width: 30%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: #4a69bd;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn_ajouter:hover {
+  background-color: #0c2461;
+}
+
+.btn_publier {
+  width: 30%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: #4a69bd;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn_publier:hover {
+  background-color: #f13a43;
 }
 /*# sourceMappingURL=styles.css.map */

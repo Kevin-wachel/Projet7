@@ -3,6 +3,19 @@ header {
     width: 100%;
     background-color: #227093;
     display: flex;
+    justify-content: space-around;
+    ul {
+        list-style: none;
+    }
+    li {
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 20px;
+    }
+    i {
+        font-size: 40px;
+        padding-top: 15px;
+    }
 }
 
 .logo {
