@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const db = require('../models/index');
-
-const User = require('../models/user');
+const sequelize = require('../config/connexiondb');
+const { Sequelize, DataTypes } = require('sequelize');
+const User = require('../models/user') (sequelize, DataTypes);
 
 // Inscription
 exports.signup = (req, res, next) => {
@@ -13,7 +13,7 @@ exports.signup = (req, res, next) => {
         email: req.body.email,
         password: hash
       });
-      db.sequelize.query(`INSERT INTO users(username, email, password) VALUES('${user.username}','${user.email}','${user.password}')`)
+      sequelize.query(`INSERT INTO users(username, email, password) VALUES('${user.username}','${user.email}','${user.password}')`)
         .then(() => res.status(201).json({ message: 'Votre compte à bien été créer !' }))
         .catch(error => res.status(400).json({ error }));
     })
@@ -48,14 +48,14 @@ exports.login = (req, res, next) => {
 
 // Tout les utilisateurs
 exports.getAllUsers = (req, res, next) => {
-  db.sequelize.query(`SELECT id, username, isAdmin, bio, email FROM users`)
+  sequelize.query(`SELECT id, username, isAdmin, bio, email FROM users`)
   .then(() => res.status(200).json({ results }))
   .catch(error => res.status(400).json({ error }));
 };
 
 // Supprimer un utilisateur
 exports.deleteUser = (req, res, next) => {
-  db.sequelize.query(`DELETE FROM users WHERE id ='${req.params.id}' `)
+  sequelize.query(`DELETE FROM users WHERE id ='${req.params.id}' `)
   .then(() => res.status(200).json({ message: 'Compte supprimé !'}))
   .catch(error => res.status(400).json({ error }));
 };
