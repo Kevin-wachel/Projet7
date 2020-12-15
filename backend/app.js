@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { sequelize } = require('./config/connexiondb');
 const userRoutes = require('./routes/user');
-//const messageRoutes = require('./routes/message');
+const messageRoutes = require('./routes/message');
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-//app.use('/api/messages', messageRoutes);
+app.use('/api/messages', messageRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
