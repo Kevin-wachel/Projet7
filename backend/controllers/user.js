@@ -64,7 +64,16 @@ exports.getAllUsers = (req, res, next) => {
 
 // Supprimer un utilisateur
 exports.deleteUser = (req, res, next) => {
-  User.deleteOne({ id: req.params.id })
-  .then(() => res.status(200).json({ message: 'Utilisateur supprimé !'}))
-  .catch(error => res.status(400).json({ error }));
+  const id = req.params.id;
+  User.destroy({ where: { id: id } })
+    .then(num => {
+      if (num == 1) {
+        res.send({ message: "Utilisateur supprimé!" });
+      } else {
+        res.send({ message: `Impossible de supprimer id=${id}. ` });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({ message: "Impossible de supprimer l'utilisateur avec l'id=" + id });
+    });
 };

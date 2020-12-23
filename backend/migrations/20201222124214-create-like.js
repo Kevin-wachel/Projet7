@@ -16,17 +16,13 @@ module.exports = {
           key: 'id'
         }
       },
-      userId: {
+      usersId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
           key: 'id'
         }
-      },
-      isLike : {
-        allowNull: false,
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
