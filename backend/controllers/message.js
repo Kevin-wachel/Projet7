@@ -5,7 +5,6 @@ const { Message } = require('../models');
 // Création d'un message
 exports.createMessage = (req, res, next) => {
   const message = {
-    usersId: req.body.idUSERS,
     content: req.body.content,
     attachment: req.body.attachment
     };
