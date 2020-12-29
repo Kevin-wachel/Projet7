@@ -5,7 +5,8 @@ const { Commentaire } = require('../models');
 // Création d'un commentaire
 exports.createCommentaire = (req, res, next) => {
     const commentaire = {
-        usersId: req.body.idUSERS,
+        messageId: req.body.messageId,
+        userId: req.body.userId,
         content: req.body.content,
         attachment: req.body.attachment
         };

@@ -1,10 +1,12 @@
 const jwt = require('jsonwebtoken');
 const sequelize = require('../config/connexiondb');
 const { Message } = require('../models');
+const { User } = require('../models');
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
   const message = {
+    userId: req.body.userId,
     content: req.body.content,
     attachment: req.body.attachment
     };
