@@ -44,3 +44,8 @@ exports.deleteMessage = (req, res, next) => {
       res.status(500).send({ message: "Impossible de supprimer le message avec l'id=" + id });
     });
 };
+
+// Ajout/suppression d'un like ou un dislike à une sauce
+exports.addLikeDislike = (req, res, next) => {
+
+};

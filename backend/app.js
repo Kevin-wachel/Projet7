@@ -4,8 +4,7 @@ const path = require('path');
 const { sequelize } = require('./config/connexiondb');
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message');
-//const likeRoutes = require('./routes/like');
-//const commentaireRoutes = require('./routes/commentaire');
+const commentaireRoutes = require('./routes/commentaire');
 
 const app = express();
 
@@ -22,7 +21,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/api/messages', messageRoutes);
 app.use('/api/auth', userRoutes);
-//app.use('/api/like', likeRoutes);
-//app.use('/api/commantaire', commentaireRoutes);
+app.use('/api/commentaire', commentaireRoutes);
 
 module.exports = app;
