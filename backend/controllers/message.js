@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
 const sequelize = require('../config/connexiondb');
 const { Message } = require('../models');
-const { User } = require('../models');
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
   const message = {
-    userId: req.body.userId,
+    UserId: req.body.UserId,
     content: req.body.content,
     attachment: req.body.attachment
     };
@@ -32,7 +31,16 @@ exports.getAllMessages = (req, res, next) => {
 
 // Supprimer les messages
 exports.deleteMessage = (req, res, next) => {
-   Message.deleteOne({ id: req.params.id })
-   .then(() => res.status(200).json({ message: 'Message supprimé !'}))
-   .catch(error => res.status(400).json({ error }));
+  const id = req.params.id;
+  Message.destroy({ where: { id: id } })
+    .then(num => {
+      if (num == 1) {
+        res.send({ message: "Message supprimé!" });
+      } else {
+        res.send({ message: `Impossible de supprimer id=${id}. ` });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({ message: "Impossible de supprimer le message avec l'id=" + id });
+    });
 };
