@@ -62,6 +62,33 @@ exports.getAllUsers = (req, res, next) => {
     });
 };
 
+// Modifier un utilisateur
+exports.modifyUser = (req, res, next) => {
+  bcrypt.hash(req.body.password, 10)
+  .then(hash => {
+  const id = req.params.id;
+  const newProfile = req.body ? {
+      username: req.body.username,
+      email: req.body.email,
+      password: hash
+ } : {
+      username: req.body.username,
+      email: req.body.email,
+      password: hash
+    } 
+  User.update(newProfile, { where: { id: id } })
+    .then(num => {
+      if (num == 1) {
+        res.send({ message: "Utilisateur modifié." });
+      } else {
+        res.send({ message: `Impossible de mettre à jour l'utilisateur avec l'id=${id}!` });
+      }
+    })
+    .catch(err => { res.status(500).send({ message: "erreur lors de la mise à jour id=" + id });
+    });
+  })
+};
+
 // Supprimer un utilisateur
 exports.deleteUser = (req, res, next) => {
   const id = req.params.id;
