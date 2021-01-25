@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const sequelize = require('../config/connexiondb');
 const { Message } = require('../models');
+const { User } = require('../models');
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
@@ -20,7 +21,7 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  Message.findAll()
+  Message.findAll({ include: User })
     .then((message) => {
       res.send(message);
     })
