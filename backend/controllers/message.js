@@ -21,7 +21,11 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  Message.findAll({ include: User })
+  Message.findAll({
+    include: [{
+      model: User
+    }]
+  })
     .then((message) => {
       res.send(message);
     })

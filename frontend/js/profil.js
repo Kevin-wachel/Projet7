@@ -15,7 +15,16 @@ utilisateur.then ( async response => {
 const infoUser = document.querySelector('.info_utilisateur')
 
 function utilisateurId() {
-    
+    // Sélection des éléments
+    const myName = document.querySelector('.name_uti');
+    const myEmail = document.querySelector('.email_uti');
+    const myBio = document.querySelector('.bio_uti');
+
+    // Intégration des données
+    myName.textContent = response.username;
+    myEmail.textContent = response.email;
+    myBio.textContent = response.bio;
+
 };
 
 
