@@ -82,5 +82,4 @@ const myButtonDec = document.querySelector(".out");
 
 myButtonDec.addEventListener('click', function (event) {
     localStorage.clear();
-    window.location.href = "index.html"; // Problème ici
 });

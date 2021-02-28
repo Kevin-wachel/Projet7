@@ -53,7 +53,7 @@ myButtonSubmit.addEventListener('click', function (event) {
             console.log(response);
             const body = await response.json();
             console.log(body);
-            //window.location.href = "";
+            window.location.href = "confirm.html";
         }catch(e) {
             console.log(e);
         }

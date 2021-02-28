@@ -39,11 +39,3 @@ commentaireRecup.then ( async response => {
 
 // Suppréssion des commentaires
 
-
-
-// Bouton retour a l'acceuil et deconnexion
-const myButtonDec = document.querySelector(".out");
-
-myButtonDec.addEventListener('click', function (event) {
-    localStorage.clear();
-});
