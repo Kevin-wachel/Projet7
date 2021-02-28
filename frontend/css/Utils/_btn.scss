@@ -47,3 +47,19 @@
 .btn_publier:hover {
     background-color: #f13a43;
 }
+
+.btn_sup {
+    width: 40%;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    background-color: #4a69bd;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.btn_sup:hover {
+    background-color: #f13a43;
+}
