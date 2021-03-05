@@ -62,6 +62,22 @@ exports.getAllUsers = (req, res, next) => {
     });
 };
 
+// Avoir un utilisateur
+
+exports.getOneUser = (req, res, next) => {
+  const id = req.params.id;
+
+  User.findByPk(id)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Erreur avec l'id=" + id
+      });
+    });
+}
+
 // Modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)

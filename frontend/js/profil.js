@@ -27,8 +27,6 @@ function utilisateurId() {
 
 };
 
-
-
 // Bouton retour a l'acceuil et deconnexion
 const myButtonDec = document.querySelector(".out");
 
