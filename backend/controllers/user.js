@@ -1,122 +1,101 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const sequelize = require('../config/connexiondb');
-const { User } = require('../models');
+const sql = require('../config/connexiondb');
 
 // Inscription
 exports.signup = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-  .then(hash => {
-    const user = {
-      username: req.body.username,
-      email: req.body.email,
-      password: hash
-      };
-      User.create(user)
-      .then(user => {
-        res.send({ user, message : "Utilisateur bien enregistré" });       
-      })
-      .catch(err => {
-        res.status(500).send({ message: err.message || "Une erreur s'est produite lors de la création de l'utilisateur." });
-      });
-    })
-    .catch(error => res.status(500).json({ error }));
+  const user = req.body
+  bcrypt.hash(user.password, 10).then((hash) => {
+    user.password = hash
+    sql.query("INSERT INTO users SET ?", user, 
+    function ( error, results, fields ) {
+      if (error) {
+        console.log(error);
+        return res.status(400).json(error.sqlMessage);
+      } 
+      return res.status(201).json({ message: "Utilisateur bien enregistré" });
+    });
+  });
 };
 
 // Connexion
 exports.login = (req, res, next) => {
-  User.findOne({
-    where: { email: req.body.email }
-  })
-  .then(user => {
-    if (!user) {
-      return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-    }
-    bcrypt.compare(req.body.password, user.password)
-    .then(valid => {
-      if (!valid) {
-        return res.status(401).json({ error: 'Mot de passe incorrect !' });
-      }
-      res.status(200).json({
-        userId: user.id,
-        token: jwt.sign(
-          { userId: user.id },
-          'RANDOM_TOKEN_SECRET',
-          { expiresIn: '24h' }
-        )
+  const user = req.body
+  if (user.email && user.password){
+    sql.query("SELECT * FROM users WHERE email = ?", user.email, 
+      function ( error, results, fields ) {
+          if (error){
+            console.log(error)
+            return res.status(400).json(error);
+          }
+          if (results.length <= 0){
+            return res.status(500).json({ message: "Email inconnu"});
+          } else {
+            bcrypt.compare(user.password, results[0].password)
+            .then(valid => {
+                if(!valid){
+                  return res.status(500).json({ message: "Email ou mot de passe incorrect"});
+                } else {
+                  return res.status(200).json({
+                    userId: user.id,
+                    token: jwt.sign(
+                      { userId: user.id },
+                      'RANDOM_TOKEN_SECRET',
+                      { expiresIn: '24h' }
+                      )
+                  });
+                };
+            })
+            .catch(error => res.status(500).json({ error }));
+          };
       });
-    })
-    .catch(error => res.status(500).json({ error }));
-  })
-  .catch(error => res.status(500).json({ error }));
+  };
 };
 
 // Tout les utilisateurs
 exports.getAllUsers = (req, res, next) => {
-  User.findAll()
-    .then((users) => {
-      res.send(users);
-    })
-    .catch(err => {
-      res.status(500).send({ message: "Il y a un problème" });
-    });
+  sql.query("SELECT * FROM users", 
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(200).json({ results });
+  });
 };
 
 // Avoir un utilisateur
-
 exports.getOneUser = (req, res, next) => {
-  const id = req.params.id;
-
-  User.findByPk(id)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Erreur avec l'id=" + id
-      });
-    });
+  sql.query(`SELECT * FROM users WHERE id=${req.params.id}`, req.params.id,
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res
+      .status(200)
+      .json({ results });
+  });
 }
 
 // Modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-  .then(hash => {
-  const id = req.params.id;
-  const newProfile = req.body ? {
-      username: req.body.username,
-      email: req.body.email,
-      password: hash
- } : {
-      username: req.body.username,
-      email: req.body.email,
-      password: hash
-    } 
-  User.update(newProfile, { where: { id: id } })
-    .then(num => {
-      if (num == 1) {
-        res.send({ message: "Utilisateur modifié." });
-      } else {
-        res.send({ message: `Impossible de mettre à jour l'utilisateur avec l'id=${id}!` });
-      }
-    })
-    .catch(err => { res.status(500).send({ message: "erreur lors de la mise à jour id=" + id });
-    });
-  })
+  sql.query(`UPDATE users SET email = '${req.body.email}', username = '${req.body.username}', password = '${req.body.password}', bio = '${req.body.bio}', isAdmin = '${req.body.isAdmin}'  WHERE id = '${req.params.id}'`, 
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(200).json({ results });
+  });
 };
 
 // Supprimer un utilisateur
 exports.deleteUser = (req, res, next) => {
-  const id = req.params.id;
-  User.destroy({ where: { id: id } })
-    .then(num => {
-      if (num == 1) {
-        res.send({ message: "Utilisateur supprimé!" });
-      } else {
-        res.send({ message: `Impossible de supprimer id=${id}. ` });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({ message: "Impossible de supprimer l'utilisateur avec l'id=" + id });
-    });
+  sql.query(`DELETE FROM users WHERE id=${req.params.id}`, req.params.id,
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res
+      .status(200)
+      .json({ message: 'Votre compte a bien été supprimé !' });
+  });
 };

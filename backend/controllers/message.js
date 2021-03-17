@@ -1,56 +1,62 @@
 const jwt = require('jsonwebtoken');
-const sequelize = require('../config/connexiondb');
-const { Message } = require('../models');
-const { User } = require('../models');
+const sql = require("../config/connexiondb");
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
-  const message = {
-    UserId: req.body.UserId,
-    content: req.body.content,
-    attachment: req.body.attachment
-    };
-    Message.create(message)
-    .then(message => {
-      res.send({ message });     
-    })
-    .catch(err => {
-      res.status(500).send({ message: err.message || "Une erreur s'est produite lors de la création du message." });
-    });
+  const message = req.body
+  sql.query("INSERT INTO messages SET ?", message, 
+    function ( error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(201).json({ message: 'Votre message a bien été posté !' });
+  });
 };
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  Message.findAll({
-    include: [{
-      model: User
-    }]
-  })
-    .then((message) => {
-      res.send(message);
-    })
-    .catch(err => {
-      res.status(500).send({ message: "Il y a un problème" });
-    });
+  sql.query("SELECT * FROM messages INNER JOIN users ON messages.userId = users.id", 
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(200).json({ results });
+  });
 };
 
 // Supprimer les messages
 exports.deleteMessage = (req, res, next) => {
-  const id = req.params.id;
-  Message.destroy({ where: { id: id } })
-    .then(num => {
-      if (num == 1) {
-        res.send({ message: "Message supprimé!" });
-      } else {
-        res.send({ message: `Impossible de supprimer id=${id}. ` });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({ message: "Impossible de supprimer le message avec l'id=" + id });
-    });
+  sql.query(`DELETE FROM messages WHERE id=${req.params.id}`, req.params.id,
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res
+      .status(200)
+      .json({ message: 'Votre message a bien été supprimé !' });
+  });
 };
 
-// Ajout/suppression d'un like ou un dislike à une sauce
-exports.addLikeDislike = (req, res, next) => {
+// Ajout d'un like à un message
+exports.addLike = (req, res, next) => {
+  const like = req.body
+  sql.query('INSERT INTO likes SET ?', like, 
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error)
+    }
+    return res.status(201).json({ message: 'Votre like a bien été ajouté !' });
+  });
+};
 
+// Suppression d'un like à un message
+exports.removeLike = (req, res, next) => {
+  
+  sql.query(`DELETE FROM likes WHERE messageId=${req.params.id} && userId=${userId}`,
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error)
+    }
+    return res.status(200).json({ message: 'Votre like a bien été supprimé !' });
+  });
 };
