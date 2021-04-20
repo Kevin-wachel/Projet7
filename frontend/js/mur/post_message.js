@@ -1,45 +1,6 @@
-// Récupération des messages
+// Récupération du token
 
-const ul = document.querySelector('.message');
 const token = JSON.parse(localStorage.getItem("login"));
-
-// Création de la methode 
-const messagesRecup = fetch("http://localhost:3000/api/messages/", {
-    method: "GET",   
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token.token}`
-    }       
-});
-
-// Récupération des données du serveur
-messagesRecup.then ( async response => {
-    try {
-        console.log(response);
-        const body = await response.json();
-        console.log(body.results);
-        function affichageMessage() {
-            for(let i = 0; i < body.results.length; i++) {
-                const myLi = document.createElement('li');
-                myLi.classList.add("message_unique");
-                const myH3 = document.createElement('h3');
-                const myMessage = document.createElement('p');
-        
-                myH3.textContent = body.results[i].username;
-                myMessage.textContent = body.results[i].content;
-        
-                myLi.appendChild(myH3);
-                myLi.appendChild(myMessage);
-        
-                ul.appendChild(myLi);
-        
-            };
-        }; 
-        affichageMessage();
-    }catch(e) {
-        console.log(e);
-    }
-}); 
 
 // Fonction pour avoir les informations de l'utilisateur grâce au token
 const parseJwt = (token) => {
@@ -60,10 +21,10 @@ myButtonPublish.addEventListener('click', function (event) {
 
     const token = JSON.parse(localStorage.getItem("login"));
     
-
     let message = {
         userId: token.userId,
-        content: document.querySelector('.msg_field').value
+        content: document.querySelector('.msg_field').value,
+        attachment: document.querySelector('.lien_field').value
     };
 
     // Création de la methode 
@@ -89,10 +50,6 @@ myButtonPublish.addEventListener('click', function (event) {
     }); 
     
 });
-
-// Suppréssion des messages
-
-
 
 // Bouton retour a l'acceuil et deconnexion
 const myButtonDec = document.querySelector(".out");
