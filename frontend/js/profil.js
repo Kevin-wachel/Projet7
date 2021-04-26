@@ -33,9 +33,9 @@ utilisateur.then ( async response => {
             const myBio = document.querySelector('.bio_uti');
         
             // Intégration des données
-            myName.textContent = "Nom d'utilisateur :" + " " + body.results[0].username;
-            myEmail.textContent = "Email de l'utilisateur :" + " " + body.results[0].email;
-            myBio.textContent = "Bio :" + " " + body.results[0].bio;
+            myName.textContent = body.results[0].username;
+            myEmail.textContent = body.results[0].email;
+            myBio.textContent = body.results[0].bio;
         
         };
         utilisateurId();
@@ -48,14 +48,42 @@ utilisateur.then ( async response => {
 
 // Modification des informations
 
-// Création de la methode 
-const utilisateurModify = fetch("http://localhost:3000/api/auth/:id", {
-    method: "PUT",   
+const myButtonModif = document.querySelector('.btn_modif');
+
+myButtonModif.addEventListener('click', function (event) {
+    event.preventDefault()
+
+    let info = {
+        username: document.querySelector('.name_uti').value,
+        email: document.querySelector('.email_uti').value,
+        bio: document.querySelector('.bio_uti')
+    };
+
+    // Création de la methode 
+    const utilisateurModify = fetch("http://localhost:3000/api/auth/:id", {
+    method: "PUT",  
+    body: JSON.stringify(info),
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token.token}`
     }       
 });
+
+    // Envoie des données au serveur
+    utilisateurModify.then ( async response => {
+        try {
+            console.log(response);
+            const body = await response.json();
+            console.log(body);
+            location.reload();
+        }catch(e) {
+            console.log(e);
+        }
+    }); 
+    
+});
+
+
 
 // Suppréssion du compte
 

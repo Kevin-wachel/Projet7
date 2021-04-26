@@ -63,3 +63,19 @@
 .btn_sup:hover {
     background-color: #f13a43;
 }
+
+.btn_modif {
+    width: 40%;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    background-color: #4a69bd;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.btn_modif:hover {
+    background-color: #0c2461;
+}
