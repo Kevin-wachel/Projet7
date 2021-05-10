@@ -12,7 +12,7 @@ const messagesRecup = fetch("http://localhost:3000/api/messages/", {
 });
 
 // Création de la methode pour les commentaires
-const commentaireRecup = fetch("http://localhost:3000/api/commentaire/", {
+const commentaireRecup = fetch("http://localhost:3000/api/commentaire/:id", {
     method: "GET",   
     headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function recupMessage() {
             myLi.appendChild(myMessage);
 
             myulcommentaire.appendChild(myLi);
-    
+            
         };
     });    
     
@@ -64,14 +64,10 @@ function recupCommentaire() {
     
             myLi.appendChild(myH3);
             myLi.appendChild(myCommentaire);
-    
+
             ul.appendChild(myLi);
             
         };
     });
 };
 recupCommentaire();
-
-function messageEtCommentaire() {
-    
-};
