@@ -22,7 +22,7 @@ myButtonPublish.addEventListener('click', function (event) {
     const token = JSON.parse(localStorage.getItem("login"));
     
     let message = {
-        userId: token.userId,
+        userId: parseJwt(token).userId,
         content: document.querySelector('.msg_field').value,
         attachment: document.querySelector('.lien_field').value
     };
