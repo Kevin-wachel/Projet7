@@ -16,7 +16,7 @@ module.exports = {
           key: 'id'
         }
       },
-      content: {
+      contentMessage: {
         allowNull: false,
         type: Sequelize.STRING
       },

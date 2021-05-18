@@ -24,7 +24,7 @@ module.exports = {
           key: 'id'
         }
       },
-      content: {
+      contentCommentaire: {
         allowNull: false,
         type: Sequelize.STRING
       },

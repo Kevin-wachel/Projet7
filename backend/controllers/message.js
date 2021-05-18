@@ -15,7 +15,7 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  sql.query("SELECT messages.id, content, attachment, likes, users.username FROM messages INNER JOIN users ON messages.userId = users.id", 
+  sql.query("SELECT messages.id, messages.contentMessage, messages.attachment, messages.likes, users.username, commentaires.contentCommentaire, commentaires.messageId FROM messages INNER JOIN users ON messages.userId = users.id INNER JOIN commentaires ON messages.id = commentaires.messageId", 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);

@@ -23,7 +23,7 @@ myButtonPublish.addEventListener('click', function (event) {
     
     let message = {
         userId: parseJwt(token).userId,
-        content: document.querySelector('.msg_field').value,
+        contentMessage: document.querySelector('.msg_field').value,
         attachment: document.querySelector('.lien_field').value
     };
 

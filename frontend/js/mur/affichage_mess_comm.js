@@ -10,7 +10,7 @@ const messagesRecup = fetch("http://localhost:3000/api/messages/", {
         "Authorization": `Bearer ${token.token}`
     }       
 });
-
+/*
 // Création de la methode pour les commentaires
 const commentaireRecup = fetch("http://localhost:3000/api/commentaire/:id", {
     method: "GET",   
@@ -19,7 +19,7 @@ const commentaireRecup = fetch("http://localhost:3000/api/commentaire/:id", {
         "Authorization": `Bearer ${token.token}`
     }       
 });
-
+*/
 
 // Partie récupération
 
@@ -33,12 +33,15 @@ function recupMessage() {
             myLi.classList.add("message_unique");
             const myH3 = document.createElement('h3');
             const myMessage = document.createElement('p');
-    
+            const myCommentaire = document.createElement('p');
+
             myH3.textContent = bodyMessage.results[i].username;
-            myMessage.textContent = bodyMessage.results[i].content;
-    
+            myMessage.textContent = bodyMessage.results[i].contentMessage;
+            myCommentaire.textContent = bodyMessage.results[i].contentCommentaire;
+
             myLi.appendChild(myH3);
             myLi.appendChild(myMessage);
+            myLi.appendChild(myCommentaire);
 
             myulcommentaire.appendChild(myLi);
             
@@ -47,7 +50,7 @@ function recupMessage() {
     
 };
 recupMessage();
-
+/*
 function recupCommentaire() {
     commentaireRecup.then ( async response => {
         console.log(response);
@@ -71,3 +74,4 @@ function recupCommentaire() {
     });
 };
 recupCommentaire();
+*/
