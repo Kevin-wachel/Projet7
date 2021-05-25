@@ -15,7 +15,18 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  sql.query("SELECT messages.id, messages.contentMessage, messages.attachment, messages.likes, users.username, commentaires.contentCommentaire, commentaires.messageId FROM messages INNER JOIN users ON messages.userId = users.id INNER JOIN commentaires ON messages.id = commentaires.messageId", 
+  sql.query("SELECT * FROM messages ", 
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(200).json({ results });
+  });
+};
+
+// Voir tout les messages et les commentaires
+exports.getAllMessagesCommentaires = (req, res, next) => {
+  sql.query("SELECT messages.id, messages.contentMessage, messages.attachment, messages.likes, users.username, commentaires.contentCommentaire, commentaires.messageId FROM messages INNER JOIN users ON messages.userId = users.id CROSS JOIN commentaires ON messages.id = commentaires.messageId ORDER BY messages.id DESC", 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);

@@ -24,16 +24,6 @@ exports.getAllCommentaire = (req, res, next) => {
   });
 };
 
-exports.getOneCommentaire = (req, res, next) => {
-  sql.query("SELECT commentaires.id, messages.content, commentaires.content FROM `commentaires` INNER JOIN messages ON commentaires.messageId = messages.id WHERE messageId LIKE 12", 
-  function (error, results, fields) {
-    if (error) {
-      return res.status(400).json(error);
-    }
-    return res.status(200).json({ results });
-  });
-};
-
 // Supprimer un commentaire
 exports.deleteCommentaire = (req, res, next) => {
   sql.query(`DELETE FROM commentaires WHERE id=${req.params.id}`, req.params.id,

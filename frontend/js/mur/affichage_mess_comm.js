@@ -1,25 +1,15 @@
 // Récupération des messages et des commentaires
 
 const ul = document.querySelector('.message');
-const myulcommentaire = document.querySelector('.commentaire');
-// Création de la methode pour les messages
-const messagesRecup = fetch("http://localhost:3000/api/messages/", {
+
+// Création de la methode pour les messages et les commentaires
+const messagesRecup = fetch("http://localhost:3000/api/messages/all", {
     method: "GET",   
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token.token}`
     }       
 });
-/*
-// Création de la methode pour les commentaires
-const commentaireRecup = fetch("http://localhost:3000/api/commentaire/:id", {
-    method: "GET",   
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token.token}`
-    }       
-});
-*/
 
 // Partie récupération
 
@@ -28,50 +18,32 @@ function recupMessage() {
         console.log(response);
         const bodyMessage = await response.json();
         console.log(bodyMessage.results);
+        this.id = -1;
+            
         for(let i = 0; i < bodyMessage.results.length; i++) {
             const myLi = document.createElement('li');
             myLi.classList.add("message_unique");
+            
             const myH3 = document.createElement('h3');
             const myMessage = document.createElement('p');
             const myCommentaire = document.createElement('p');
 
-            myH3.textContent = bodyMessage.results[i].username;
-            myMessage.textContent = bodyMessage.results[i].contentMessage;
-            myCommentaire.textContent = bodyMessage.results[i].contentCommentaire;
-
+            myH3.textContent = bodyMessage.results[i].username; 
             myLi.appendChild(myH3);
-            myLi.appendChild(myMessage);
+
+            if (this.id != bodyMessage.results[i].id) {
+                myMessage.textContent = bodyMessage.results[i].contentMessage;
+                myLi.appendChild(myMessage);
+                this.id = bodyMessage.results[i].id;
+            }
+
+            myCommentaire.textContent = bodyMessage.results[i].contentCommentaire;
             myLi.appendChild(myCommentaire);
 
-            myulcommentaire.appendChild(myLi);
+            ul.appendChild(myLi);
             
         };
     });    
     
 };
 recupMessage();
-/*
-function recupCommentaire() {
-    commentaireRecup.then ( async response => {
-        console.log(response);
-        const bodyCommentaire = await response.json();
-        console.log(bodyCommentaire.results);
-        for(let j = 0; j < bodyCommentaire.results.length; j++) {
-            const myLi = document.createElement('li');
-            myLi.classList.add("commentaire_unique");
-            const myH3 = document.createElement('h3');
-            const myCommentaire = document.createElement('p');
-            
-            myH3.textContent = bodyCommentaire.results[j].username;
-            myCommentaire.textContent = bodyCommentaire.results[j].content;
-    
-            myLi.appendChild(myH3);
-            myLi.appendChild(myCommentaire);
-
-            ul.appendChild(myLi);
-            
-        };
-    });
-};
-recupCommentaire();
-*/
