@@ -15,7 +15,7 @@ exports.createCommentaire = (req, res, next) => {
 
 // Voir tout les commentaires
 exports.getAllCommentaire = (req, res, next) => {
-  sql.query("SELECT commentaires.id, messageId, userId, content, users.username FROM commentaires INNER JOIN users ON commentaires.userId = users.id", 
+  sql.query("SELECT commentaires.id, messageId, userId, contentCommentaire, users.username FROM commentaires INNER JOIN users ON commentaires.userId = users.id", 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);

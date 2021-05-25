@@ -84,7 +84,9 @@
 
 .message_unique{
     width: 600px;
-    height: 300px;
+    height: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     background-color: #FFF;
     box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
     list-style-type: none;
@@ -94,5 +96,11 @@
 }
 
 .commentaire_unique {
+    width: 600px;
+    height: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
     list-style-type: none;
 }
