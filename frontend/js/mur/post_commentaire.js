@@ -1,6 +1,6 @@
 // Création des commentaires
 /*
-const mRecup = fetch("http://localhost:3000/api/messages/", {
+const mRecup = fetch("http://localhost:3000/api/messages/:id", {
 method: "GET",   
 headers: {
     "Content-Type": "application/json",

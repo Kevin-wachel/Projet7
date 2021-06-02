@@ -24,6 +24,19 @@ exports.getAllMessages = (req, res, next) => {
   });
 };
 
+// Voir un message
+exports.getOneMessage = (req, res, next) => {
+  sql.query(`SELECT * FROM messages WHERE id=${req.params.id}`, req.params.id,
+  function (error, results, fields) {
+    if (error) {
+      return res.status(400).json(error);
+    }
+    return res
+      .status(200)
+      .json({ results });
+  });
+};
+
 // Supprimer les messages
 exports.deleteMessage = (req, res, next) => {
   sql.query(`DELETE FROM messages WHERE id=${req.params.id}`, req.params.id,

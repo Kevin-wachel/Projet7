@@ -73,7 +73,7 @@ exports.getOneUser = (req, res, next) => {
       .status(200)
       .json({ results });
   });
-}
+};
 
 // Modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
