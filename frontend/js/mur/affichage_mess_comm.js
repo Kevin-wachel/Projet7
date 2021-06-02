@@ -27,42 +27,62 @@ const messageEtCommentaire = async function() {
 
     // Récupération des messages
     for(let i = 0; i < body[0].results.length; i++) {
+        
+        // DOM des messages
         const myLi = document.createElement('li');
         myLi.classList.add("message_unique");
-        const myH3 = document.createElement('h3');
+        const myH3Message = document.createElement('h3');
         const myMessage = document.createElement('p');
+        const myHr = document.createElement('hr');
 
-        myH3.textContent = body[0].results[i].username;
+        myH3Message.textContent = body[0].results[i].username;
         myMessage.textContent = body[0].results[i].contentMessage;
 
-        myLi.appendChild(myH3);
+        myLi.appendChild(myH3Message);
         myLi.appendChild(myMessage);
+        myLi.appendChild(myHr);
 
         ul.appendChild(myLi);
-        
-        // Récupération des commentaires
-        
+               
+        // Récupération des commentaires     
         for(let j = 0; j < body[1].results.length; j++) {
             if (body[0].results[i].id == body[1].results[j].messageId) {
-            const myLi = document.createElement('li');
-            myLi.classList.add("commentaire_unique");
-            const myH3 = document.createElement('h3');
+
+            // DOM des commentaires    
+            const myH3Commentaire = document.createElement('h3');
             const myCommentaire = document.createElement('p');
-    
-            myH3.textContent = body[1].results[j].username;
+            const myHr2 = document.createElement('hr');
+
+            myH3Commentaire.textContent = body[1].results[j].username;
             myCommentaire.textContent = body[1].results[j].contentCommentaire;
     
-            myLi.appendChild(myH3);
+            myLi.appendChild(myH3Commentaire);
             myLi.appendChild(myCommentaire);
-    
-            ul.appendChild(myLi);
+            myLi.appendChild(myHr2);
                 
             };
         };
 
-    };
+        
+        /*
+        const message = document.querySelector('.message');
 
-    
+        // Création de la partie post des commentaires
+        const myH4 = document.createElement('h4');
+        const myCommentaire = document.createElement('textarea');
+        const myButtonCommentaire = document.createElement('button');
+
+        myButtonCommentaire.classList.add("btn_commentaire");
+        myCommentaire.classList.add("comm_field");
+        myButtonCommentaire.textContent = "Publier";
+        myH4.textContent = "Votre commentaire";
+
+        message.appendChild(myH4)
+        message.appendChild(myCommentaire);
+        message.appendChild(myButtonCommentaire);
+        */
+    };  
+
 
 };
 messageEtCommentaire();

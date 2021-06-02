@@ -193,6 +193,23 @@ h1 {
   padding: 10px 25px;
   margin: 150px 200px 200px 200px;
   border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.info_utilisateur textarea {
+  width: 300px;
+  height: 50px;
+}
+
+.info_btn {
+  margin-top: 20px;
 }
 
 /* Partie messages */
@@ -301,11 +318,24 @@ h1 {
 }
 
 /* Affichage du message */
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: -40px;
+}
+
 .message_unique {
   width: 600px;
   height: auto;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background-color: #FFF;
   -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
           box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
@@ -316,15 +346,8 @@ h1 {
   text-align: center;
 }
 
-.commentaire_unique {
-  width: 600px;
-  height: auto;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  background-color: #FFF;
-  -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
-          box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
-  list-style-type: none;
+.message_unique p {
+  padding-left: 5px;
 }
 
 .insc_ok {

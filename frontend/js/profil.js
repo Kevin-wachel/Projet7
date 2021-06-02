@@ -56,25 +56,26 @@ myButtonModif.addEventListener('click', function (event) {
     let info = {
         username: document.querySelector('.name_uti').value,
         email: document.querySelector('.email_uti').value,
-        bio: document.querySelector('.bio_uti')
+        bio: document.querySelector('.bio_uti').value
     };
+    console.log(info);
 
     // Création de la methode 
     const utilisateurModify = fetch("http://localhost:3000/api/auth/:id", {
-    method: "PUT",  
-    body: JSON.stringify(info),
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token.token}`
-    }       
-});
+        method: "PUT",  
+        body: JSON.stringify(info),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.token}`
+        }       
+    });
 
     // Envoie des données au serveur
     utilisateurModify.then ( async response => {
         try {
             console.log(response);
             const body = await response.json();
-            console.log(body);
+            console.log(body.results);
             location.reload();
         }catch(e) {
             console.log(e);
