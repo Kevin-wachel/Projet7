@@ -15,7 +15,7 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  sql.query("SELECT messages.id, contentMessage, attachment, likes, users.username FROM messages INNER JOIN users ON messages.userId = users.id", 
+  sql.query("SELECT messages.id, contentMessage, attachment, likes, users.username FROM messages INNER JOIN users ON messages.userId = users.id ORDER BY messages.id DESC", 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);
@@ -31,9 +31,7 @@ exports.getOneMessage = (req, res, next) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res
-      .status(200)
-      .json({ results });
+    return res.status(200).json({ results });
   });
 };
 
@@ -44,8 +42,6 @@ exports.deleteMessage = (req, res, next) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res
-      .status(200)
-      .json({ message: 'Votre message a bien été supprimé !' });
+    return res.status(200).json({ message: 'Votre message a bien été supprimé !' });
   });
 };

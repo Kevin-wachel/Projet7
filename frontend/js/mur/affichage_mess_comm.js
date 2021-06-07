@@ -11,7 +11,7 @@ const messagesRecup = fetch("http://localhost:3000/api/messages/", {
     }       
 }).then(response => response.json());
 
-const commentaireRecup = fetch("http://localhost:3000/api/commentaire/", {
+const commentaireRecup = fetch("http://localhost:3000/api/commentaires/", {
     method: "GET",   
     headers: {
         "Content-Type": "application/json",
@@ -63,10 +63,6 @@ const messageEtCommentaire = async function() {
             };
         };
 
-        
-        /*
-        const message = document.querySelector('.message');
-
         // Création de la partie post des commentaires
         const myH4 = document.createElement('h4');
         const myCommentaire = document.createElement('textarea');
@@ -75,14 +71,50 @@ const messageEtCommentaire = async function() {
         myButtonCommentaire.classList.add("btn_commentaire");
         myCommentaire.classList.add("comm_field");
         myButtonCommentaire.textContent = "Publier";
-        myH4.textContent = "Votre commentaire";
+        myH4.textContent = "Votre commentaire : " + body[0].results[i].id;
 
-        message.appendChild(myH4)
-        message.appendChild(myCommentaire);
-        message.appendChild(myButtonCommentaire);
-        */
+        myLi.appendChild(myH4)
+        myLi.appendChild(myCommentaire);
+        myLi.appendChild(myButtonCommentaire);
+
+        ul.appendChild(myLi);
+
+        myButtonCommentaire.addEventListener('click', function (event) {
+            event.preventDefault()
+
+            const token = JSON.parse(localStorage.getItem("login"));
+            
+            let commentaire = {
+                userId: parseJwt(token).userId,
+                messageId: body[0].results[i].id,
+                contentCommentaire: document.querySelector('.comm_field').value
+            };
+
+            // Création de la methode 
+            const envoieCommentaire = fetch("http://localhost:3000/api/commentaires/", {
+                method: "POST",
+                body: JSON.stringify(commentaire),    
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token.token}`
+                }       
+            });
+
+            // Envoie des données au serveur
+            envoieCommentaire.then ( async response => {
+                try {
+                    console.log(response);
+                    const body = await response.json();
+                    console.log(body);
+                    location.reload();
+                }catch(e) {
+                    console.log(e);
+                }
+            }); 
+            
+        });
+
     };  
-
 
 };
 messageEtCommentaire();

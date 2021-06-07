@@ -21,7 +21,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/api/messages', messageRoutes);
 app.use('/api/auth', userRoutes);
-app.use('/api/commentaire', commentaireRoutes);
+app.use('/api/commentaires', commentaireRoutes);
 app.use('/api/like', likeRoutes);
 
 module.exports = app;

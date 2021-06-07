@@ -69,9 +69,7 @@ exports.getOneUser = (req, res, next) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res
-      .status(200)
-      .json({ results });
+    return res.status(200).json({ results });
   });
 };
 
@@ -93,8 +91,6 @@ exports.deleteUser = (req, res, next) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res
-      .status(200)
-      .json({ message: 'Votre compte a bien été supprimé !' });
+    return res.status(200).json({ message: 'Votre compte a bien été supprimé !' });
   });
 };
