@@ -58,10 +58,9 @@ myButtonModif.addEventListener('click', function (event) {
         email: document.querySelector('.email_uti').value,
         bio: document.querySelector('.bio_uti').value
     };
-    console.log(info);
 
     // Création de la methode 
-    const utilisateurModify = fetch("http://localhost:3000/api/auth/:id", {
+    const utilisateurModify = fetch("http://localhost:3000/api/auth/" + parseJwt(token).userId, {
         method: "PUT",  
         body: JSON.stringify(info),
         headers: {

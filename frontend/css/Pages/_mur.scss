@@ -58,28 +58,6 @@
     border: 2px solid rgba(30, 85, 250, 0.47);
 }
 
-.lien_field {
-    width: 70%;
-    height: 25px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 8px;
-    outline: none;
-    border: 2px solid rgba(0, 0, 0, 0);
-    background-color: rgba(230, 230, 230, 0.6);
-    margin: 5px auto 15px auto;
-    transition: 0.3s;
-}
-
-.lien_field:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.lien_field:focus {
-    background-color: #FFF;
-    border: 2px solid rgba(30, 85, 250, 0.47);
-}
-
 /* Affichage du message */
 
 .message {
@@ -102,4 +80,19 @@
     p {
         padding-left: 5px;
     }
+    img {
+        width: 600px;
+        height: auto;
+    }
+}
+
+/* Affichage formulaire commentaire */
+
+.form_comm{
+    display: flex;
+    flex-direction: row;
+}
+
+.comm_field {
+    width: 50%;
 }

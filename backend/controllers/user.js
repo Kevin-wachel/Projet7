@@ -64,7 +64,7 @@ exports.getAllUsers = (req, res, next) => {
 
 // Avoir un utilisateur
 exports.getOneUser = (req, res, next) => {
-  sql.query(`SELECT * FROM users WHERE id=${req.params.id}`, req.params.id,
+  sql.query(`SELECT id, username, email, isAdmin, bio FROM users WHERE id=${req.params.id}`, req.params.id,
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);
@@ -75,7 +75,7 @@ exports.getOneUser = (req, res, next) => {
 
 // Modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
-  sql.query(`UPDATE users SET email = '${req.body.email}', username = '${req.body.username}', password = '${req.body.password}', bio = '${req.body.bio}', isAdmin = '${req.body.isAdmin}'  WHERE id = '${req.params.id}'`, 
+  sql.query(`UPDATE users SET email = '${req.body.email}', username = '${req.body.username}', bio = '${req.body.bio}', isAdmin = '${req.body.isAdmin}'  WHERE id = '${req.params.id}'`, 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);

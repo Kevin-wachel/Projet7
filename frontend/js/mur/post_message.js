@@ -15,24 +15,24 @@ console.log(parseJwt(token));
 // Création des messages
 
 const myButtonPublish = document.querySelector('.btn_publier');
+const form = document.querySelector('.message_utilisateur');
 
 myButtonPublish.addEventListener('click', function (event) {
     event.preventDefault()
 
     const token = JSON.parse(localStorage.getItem("login"));
-    
-    let message = {
-        userId: parseJwt(token).userId,
-        contentMessage: document.querySelector('.msg_field').value,
-        attachment: document.querySelector('.lien_field').value
-    };
+
+    const formData = new FormData(form);
+
+    formData.append("userId", parseJwt(token).userId);
+    formData.append("contentMessage", document.querySelector('.msg_field').value);
+    formData.append("attachment", document.querySelector('.lien').files[0]);
 
     // Création de la methode 
     const envoieMessage = fetch("http://localhost:3000/api/messages/", {
         method: "POST",
-        body: JSON.stringify(message),    
+        body: formData,    
         headers: {
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${token.token}`
         }       
     });

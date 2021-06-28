@@ -289,34 +289,6 @@ h1 {
   border: 2px solid rgba(30, 85, 250, 0.47);
 }
 
-.lien_field {
-  width: 70%;
-  height: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 10px 8px;
-  outline: none;
-  border: 2px solid rgba(0, 0, 0, 0);
-  background-color: rgba(230, 230, 230, 0.6);
-  margin: 5px auto 15px auto;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.lien_field:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.lien_field:focus {
-  background-color: #FFF;
-  border: 2px solid rgba(30, 85, 250, 0.47);
-}
-
 /* Affichage du message */
 .message {
   display: -webkit-box;
@@ -348,6 +320,26 @@ h1 {
 
 .message_unique p {
   padding-left: 5px;
+}
+
+.message_unique img {
+  width: 600px;
+  height: auto;
+}
+
+/* Affichage formulaire commentaire */
+.form_comm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.comm_field {
+  width: 50%;
 }
 
 .insc_ok {
@@ -412,7 +404,7 @@ h1 {
   transition: 0.3s;
 }
 
-.btn_publier:hover {
+.btn_publier:hover, .btn_publier_comm:hover {
   background-color: #f13a43;
 }
 
@@ -448,5 +440,33 @@ h1 {
 
 .btn_modif:hover {
   background-color: #0c2461;
+}
+
+.btn_supp_message, .btn_supp_comm {
+  width: 5%;
+  background-color: #f13a43;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn_supp_message:hover, .btn_supp_comm:hover {
+  background-color: #cc050f;
+}
+
+.btn_publier_comm {
+  width: 20%;
+  height: 30px;
+  margin: auto 0;
+  font-size: 1.1rem;
+  background-color: #4a69bd;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 /*# sourceMappingURL=styles.css.map */

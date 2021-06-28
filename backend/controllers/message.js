@@ -3,7 +3,16 @@ const sql = require("../config/connexiondb");
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
-  const message = req.body
+  //const message = req.body
+  let image = "";
+  if(req.file !== undefined){
+    image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+  }
+  const message = {
+    userId: req.body.userId,
+    contentMessage: req.body.contentMessage,
+    attachment: image
+  }
   sql.query("INSERT INTO messages SET ?", message, 
     function ( error, results, fields) {
     if (error) {
@@ -15,7 +24,7 @@ exports.createMessage = (req, res, next) => {
 
 // Voir tout les messages
 exports.getAllMessages = (req, res, next) => {
-  sql.query("SELECT messages.id, contentMessage, attachment, likes, users.username FROM messages INNER JOIN users ON messages.userId = users.id ORDER BY messages.id DESC", 
+  sql.query("SELECT messages.id, contentMessage, attachment, userId, users.username, users.isAdmin FROM messages INNER JOIN users ON messages.userId = users.id ORDER BY messages.id DESC", 
   function (error, results, fields) {
     if (error) {
       return res.status(400).json(error);

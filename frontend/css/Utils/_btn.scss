@@ -44,7 +44,7 @@
     transition: 0.3s;
 }
 
-.btn_publier:hover {
+.btn_publier:hover, .btn_publier_comm:hover {
     background-color: #f13a43;
 }
 
@@ -78,4 +78,30 @@
 
 .btn_modif:hover {
     background-color: #0c2461;
+}
+
+.btn_supp_message, .btn_supp_comm {
+    width: 5%;
+    background-color: #f13a43;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn_supp_message:hover, .btn_supp_comm:hover {
+    background-color: #cc050f;
+}
+
+.btn_publier_comm {
+    width: 20%;
+    height: 30px;
+    margin: auto 0;
+    font-size: 1.1rem;
+    background-color: #4a69bd;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #FFF;
+    transition: 0.3s;
 }

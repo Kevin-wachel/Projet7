@@ -49,10 +49,12 @@ myButtonConnexion.addEventListener('click', function (event) {
             try {
                 console.log(response);
                 const body = await response.json();
-                console.log(body);
-                myReponse = JSON.stringify(body);
-                localStorage.setItem("login", myReponse);
-                window.location.href = "mur.html";
+                console.log(body); 
+                if (response.ok == true) {
+                    myReponse = JSON.stringify(body);
+                    localStorage.setItem("login", myReponse);
+                    window.location.href = "mur.html";
+                }           
             }catch(e) {
                 console.log(e);
             }
