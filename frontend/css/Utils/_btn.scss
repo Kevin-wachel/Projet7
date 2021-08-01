@@ -19,9 +19,10 @@
 /* Zone profil */
 
 .btn_sup {
-    width: 40%;
+    width: 80%;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
+    margin-top: 10px;
     background-color: #4a69bd;
     cursor: pointer;
     outline: none;
@@ -35,7 +36,7 @@
 }
 
 .btn_modif {
-    width: 40%;
+    width: 80%;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     margin-top: 20px;
@@ -51,10 +52,19 @@
     background-color: #0c2461;
 }
 
+@media (min-width: 700px) {
+    .btn_sup {
+        width: 40%;
+    }
+    .btn_modif {
+        width: 40%;
+    }
+}
+
 /* Zone mur */
 
 .btn_publier {
-    width: 30%;
+    width: 40%;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     background-color: #4a69bd;
@@ -70,7 +80,7 @@
 }
 
 .btn_supp_message, .btn_supp_comm {
-    width: 5%;
+    width: 10%;
     background-color: #f13a43;
     cursor: pointer;
     outline: none;
@@ -83,7 +93,7 @@
 }
 
 .btn_publier_comm {
-    width: 20%;
+    width: 30%;
     height: 30px;
     margin: auto;
     margin-bottom: 5px;

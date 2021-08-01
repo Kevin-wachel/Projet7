@@ -58,14 +58,14 @@ header li {
 }
 
 header i {
-  font-size: 35px;
+  font-size: 25px;
   padding-top: 15px;
 }
 
 .logo {
-  height: 50px;
-  width: 150px;
-  padding-top: 25px;
+  height: 25px;
+  width: auto;
+  padding-top: 30px;
 }
 
 @media (min-width: 700px) {
@@ -90,7 +90,7 @@ h1 {
 
 /* Partie se connecter */
 .form_connect {
-  width: 300px;
+  width: 250px;
   height: 300px;
   margin: 30px auto;
   -webkit-box-pack: center;
@@ -124,7 +124,7 @@ h1 {
 
 /* Partie s'inscrire */
 .form {
-  width: 300px;
+  width: 250px;
   height: 400px;
   margin: 30px auto;
   -webkit-box-pack: center;
@@ -218,7 +218,7 @@ h1 {
 }
 
 .info_utilisateur textarea {
-  width: 300px;
+  width: 200px;
   height: 50px;
 }
 
@@ -244,7 +244,7 @@ h1 {
 
 /* Partie messages */
 .message_utilisateur {
-  width: 350px;
+  width: 250px;
   height: 300px;
   margin: 30px auto;
   -webkit-box-pack: center;
@@ -257,6 +257,10 @@ h1 {
   background-color: #FFF;
   -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
           box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.message_utilisateur input {
+  width: 200px;
 }
 
 .msg_field {
@@ -325,7 +329,7 @@ h1 {
 }
 
 .message_unique {
-  width: 350px;
+  width: 250px;
   height: auto;
   display: inline;
   -webkit-box-orient: vertical;
@@ -348,7 +352,7 @@ h1 {
 }
 
 .message_unique img {
-  width: 300px;
+  width: 250px;
   height: auto;
   display: block;
   margin: auto;
@@ -442,9 +446,10 @@ h1 {
 
 /* Zone profil */
 .btn_sup {
-  width: 40%;
+  width: 80%;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
+  margin-top: 10px;
   background-color: #4a69bd;
   cursor: pointer;
   outline: none;
@@ -459,7 +464,7 @@ h1 {
 }
 
 .btn_modif {
-  width: 40%;
+  width: 80%;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -476,9 +481,18 @@ h1 {
   background-color: #0c2461;
 }
 
+@media (min-width: 700px) {
+  .btn_sup {
+    width: 40%;
+  }
+  .btn_modif {
+    width: 40%;
+  }
+}
+
 /* Zone mur */
 .btn_publier {
-  width: 30%;
+  width: 40%;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   background-color: #4a69bd;
@@ -495,7 +509,7 @@ h1 {
 }
 
 .btn_supp_message, .btn_supp_comm {
-  width: 5%;
+  width: 10%;
   background-color: #f13a43;
   cursor: pointer;
   outline: none;
@@ -509,7 +523,7 @@ h1 {
 }
 
 .btn_publier_comm {
-  width: 20%;
+  width: 30%;
   height: 30px;
   margin: auto;
   margin-bottom: 5px;
