@@ -3,18 +3,18 @@
 // Fonction de vérification
 function checkInputLogin() {
     // Regex
-    let checkString = /[a-zéèêàçî]/;
-    let checkMail = /.+@.+\..+/;
+    const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@#$%^&*])(?=.{6,})/;
   
     // Inputs de l'utilisateur
     let formMail = document.querySelector('#email_connect').value;
     let formMdp = document.querySelector('#mdp_connect').value;
   
     // Vérifier les inputs de l'utilisateur
-    if (checkMail.test(formMail) == false) {
+    if (EMAIL_REGEX.test(formMail) == false) {
         alert("Votre email doit être au format xxx@yyy.zzz");
         return false;
-    }else if (checkString.test(formMdp) == false) {
+    }else if (PASSWORD_REGEX.test(formMdp) == false) {
         alerte("Votre mot de passe n'est pas correct");
         return false;
     } else {
@@ -54,7 +54,10 @@ myButtonConnexion.addEventListener('click', function (event) {
                     myReponse = JSON.stringify(body);
                     localStorage.setItem("login", myReponse);
                     window.location.href = "mur.html";
-                }           
+                } else {
+                    alert("Mauvais identifiant ou mot de passe");
+                    location.reload();
+                }          
             }catch(e) {
                 console.log(e);
             }

@@ -8,7 +8,7 @@ function checkInputSignUp() {
     // Regex
     let checkString = /[a-zéèêàçî]/;
     const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@#$%^&*])(?=.{8,})/;
+    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@#$%^&*])(?=.{6,})/;
   
     // Inputs de l'utilisateur
     let formNom = document.querySelector('#name').value;
@@ -22,8 +22,8 @@ function checkInputSignUp() {
     } else if (EMAIL_REGEX.test(formMail) == false) {
         alert("Votre email doit être au format xxx@yyy.zzz");
         return false;
-    } else if (checkString.test(formMdp) == false) {
-        alerte("Votre mot de passe n'est pas correct");
+    } else if (PASSWORD_REGEX.test(formMdp) == false) {
+        alert("Votre mot de passe n'est pas correct, il doit avoir 6 caractères minimun dont une majuscule, un chiffre et un caractère spéciales");
         return false;
     } else {
         return true;

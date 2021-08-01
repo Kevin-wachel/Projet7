@@ -19,18 +19,9 @@ const commentaireRecup = fetch("http://localhost:3000/api/commentaires/", {
     }       
 }).then(response => response.json());
 
-const likeRecup = fetch("http://localhost:3000/api/like/", {
-    method: "GET",   
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token.token}`
-    }       
-}).then(response => response.json());
-
 // Partie récupération
-
 const messageEtCommentaire = async function() {
-    let body = await Promise.all([messagesRecup, commentaireRecup, likeRecup]);
+    let body = await Promise.all([messagesRecup, commentaireRecup]);
     console.log(body);
 
     // Récupération des messages
@@ -40,24 +31,24 @@ const messageEtCommentaire = async function() {
         const myLi = document.createElement('li');
         myLi.classList.add("message_unique");
         const myH3Message = document.createElement('h3');
+        myH3Message.title = "Nom du createur du message";
         const myMessage = document.createElement('p');
+        myMessage.title = "Message";
         const myHr = document.createElement('hr');
         const myLien = document.createElement('img');
-        const myButtonLike = document.createElement('button');
         const myButtonDeleteMessage = document.createElement('button');
         myButtonDeleteMessage.classList.add("btn_supp_message");
 
         myH3Message.textContent = body[0].results[i].username;
         myMessage.textContent = body[0].results[i].contentMessage;
         myLien.setAttribute('src', body[0].results[i].attachment);
-        myButtonLike.innerHTML = '<i class="far fa-thumbs-up"></i>';
         myButtonDeleteMessage.innerHTML = '<i class="fas fa-times"></i>';
+        myButtonDeleteMessage.title = 'Supprimer';
 
         myLi.appendChild(myButtonDeleteMessage);
         myLi.appendChild(myH3Message);
         myLi.appendChild(myMessage);
         myLi.appendChild(myLien);
-        myLi.appendChild(myButtonLike);
         myLi.appendChild(myHr);
 
         ul.appendChild(myLi);
@@ -68,10 +59,13 @@ const messageEtCommentaire = async function() {
 
             // DOM des commentaires    
             const myH3Commentaire = document.createElement('h3');
+            myH3Commentaire.title = "Nom du createur du commentaire";
             const myCommentaire = document.createElement('p');
+            myCommentaire.title = "Commentaire";
             const myHr2 = document.createElement('hr');
             const myButtonDeleteCommentaire = document.createElement('button');
             myButtonDeleteCommentaire.classList.add("btn_supp_comm");
+            myButtonDeleteCommentaire.title = 'Supprimer';
             
             myButtonDeleteCommentaire.innerHTML = '<i class="fas fa-times"></i>';
 
@@ -121,9 +115,11 @@ const messageEtCommentaire = async function() {
         const myButtonCommentaire = document.createElement('button');
         const myLabelCommentaire = document.createElement('label');
         const myFormCommentaire =document.createElement('form');
+        myFormCommentaire.title = "Zone de commentaire";
 
         myCommentaire.classList.add("comm_field");
         myButtonCommentaire.textContent = "Publier";
+        myButtonCommentaire.title = 'Publier';
         myButtonCommentaire.classList.add("btn_publier_comm");
         myFormCommentaire.classList.add("form_comm");
         myH4.textContent = "Votre commentaire :";
@@ -173,92 +169,6 @@ const messageEtCommentaire = async function() {
             }); 
             
         });
-
-
-
-
-
-/*
-        for(let k = 0; k < body[2].results.length; k++) {
-            if (body[2].results[k].likes === 0) { //Le problème se situe ici
-                // Bouton pour ajouter les likes
-                myButtonLike.addEventListener('click', function (event) {
-                    event.preventDefault()
-
-                    const token = JSON.parse(localStorage.getItem("login"));
-                    
-                    let like = {
-                        userId: parseJwt(token).userId,
-                        messageId: body[0].results[i].id,
-                        likes: i + 1
-                    };
-
-                    // Création de la methode 
-                    const envoieLike = fetch("http://localhost:3000/api/like/" + body[0].results[i].id, {
-                        method: "POST",
-                        body: JSON.stringify(like),    
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token.token}`
-                        }       
-                    });
-
-                    // Envoie des données au serveur
-                    envoieLike.then ( async response => {
-                        try {
-                            console.log(response);
-                            const body = await response.json();
-                            console.log(body);
-                            //location.reload();
-                        }catch(e) {
-                            console.log(e);
-                        }
-                    }); 
-                    
-                });
-
-            } else {
-                // Bouton pour enlever les likes
-                myButtonLike.addEventListener('click', function (event) {
-                    event.preventDefault()
-
-                    const token = JSON.parse(localStorage.getItem("login"));
-                    
-                    let like = {
-                        userId: parseJwt(token).userId,
-                        messageId: body[0].results[i].id,
-                    };
-
-                    // Création de la methode 
-                    const removeLike = fetch("http://localhost:3000/api/like/" + body[0].results[i].id, {
-                        method: "DELETE",
-                        body: JSON.stringify(like),    
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token.token}`
-                        }       
-                    });
-
-                    // Envoie des données au serveur
-                    removeLike.then ( async response => {
-                        try {
-                            console.log(response);
-                            const body = await response.json();
-                            console.log(body);
-                            //location.reload();
-                        }catch(e) {
-                            console.log(e);
-                        }
-                    }); 
-                    
-                });
-            }
-        }
-*/
-
-
-
-
         
         // Supprimer le message
         if (body[0].results[i].isAdmin === 1 || body[0].results[i].userId === parseJwt(token).userId) {

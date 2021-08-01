@@ -1,4 +1,4 @@
-/* Bouton envoyer du formulaire */ 
+/* Zone index */ 
 
 .btn {
     width: 40%;
@@ -16,37 +16,7 @@
     background-color: #0c2461;
 }
 
-.btn_ajouter {
-    width: 30%;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    background-color: #4a69bd;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: #FFF;
-    transition: 0.3s;
-}
-
-.btn_ajouter:hover {
-    background-color: #0c2461;
-}
-
-.btn_publier {
-    width: 30%;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    background-color: #4a69bd;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: #FFF;
-    transition: 0.3s;
-}
-
-.btn_publier:hover, .btn_publier_comm:hover {
-    background-color: #f13a43;
-}
+/* Zone profil */
 
 .btn_sup {
     width: 40%;
@@ -68,6 +38,7 @@
     width: 40%;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
+    margin-top: 20px;
     background-color: #4a69bd;
     cursor: pointer;
     outline: none;
@@ -78,6 +49,24 @@
 
 .btn_modif:hover {
     background-color: #0c2461;
+}
+
+/* Zone mur */
+
+.btn_publier {
+    width: 30%;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    background-color: #4a69bd;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.btn_publier:hover, .btn_publier_comm:hover {
+    background-color: #f13a43;
 }
 
 .btn_supp_message, .btn_supp_comm {
@@ -96,7 +85,8 @@
 .btn_publier_comm {
     width: 20%;
     height: 30px;
-    margin: auto 0;
+    margin: auto;
+    margin-bottom: 5px;
     font-size: 1.1rem;
     background-color: #4a69bd;
     cursor: pointer;
@@ -104,4 +94,12 @@
     border: none;
     color: #FFF;
     transition: 0.3s;
+}
+
+@media (min-width: 700px) {
+    .btn_publier_comm {
+        width: 20%;
+        height: 30px;
+        margin: auto;
+    }
 }

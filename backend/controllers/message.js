@@ -3,7 +3,6 @@ const sql = require("../config/connexiondb");
 
 // Création d'un message
 exports.createMessage = (req, res, next) => {
-  //const message = req.body
   let image = "";
   if(req.file !== undefined){
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;

@@ -4,7 +4,7 @@
 }
 
 body {
-  height: 100%;
+  width: 100%;
   margin: 0;
 }
 
@@ -54,11 +54,11 @@ header ul {
 header li {
   text-decoration: none;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 header i {
-  font-size: 40px;
+  font-size: 35px;
   padding-top: 15px;
 }
 
@@ -66,6 +66,20 @@ header i {
   height: 50px;
   width: 150px;
   padding-top: 25px;
+}
+
+@media (min-width: 700px) {
+  header {
+    height: 100px;
+    width: 100%;
+  }
+  header li {
+    margin-right: 20px;
+  }
+  header i {
+    font-size: 40px;
+    padding-top: 15px;
+  }
 }
 
 /* */
@@ -191,7 +205,7 @@ h1 {
 /* Partie information utilisateur */
 .info_utilisateur {
   padding: 10px 25px;
-  margin: 150px 200px 200px 200px;
+  margin: 15px 20px 20px 20px;
   border: 1px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -208,13 +222,29 @@ h1 {
   height: 50px;
 }
 
-.info_btn {
-  margin-top: 20px;
+@media (min-width: 700px) {
+  .info_utilisateur {
+    margin: 100px 150px 150px 150px;
+  }
+  .info_utilisateur textarea {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .info_utilisateur {
+    margin: 150px 200px 200px 200px;
+  }
+  .info_utilisateur textarea {
+    width: 400px;
+    height: 60px;
+  }
 }
 
 /* Partie messages */
 .message_utilisateur {
-  width: 600px;
+  width: 350px;
   height: 300px;
   margin: 30px auto;
   -webkit-box-pack: center;
@@ -227,38 +257,6 @@ h1 {
   background-color: #FFF;
   -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
           box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
-}
-
-.message_utilisateur .votre_titre {
-  padding-top: 10px;
-}
-
-.titre_msg_field {
-  width: 70%;
-  height: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 10px 8px;
-  outline: none;
-  border: 2px solid rgba(0, 0, 0, 0);
-  background-color: rgba(230, 230, 230, 0.6);
-  margin: 5px auto 15px auto;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.titre_msg_field:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.titre_msg_field:focus {
-  background-color: #FFF;
-  border: 2px solid rgba(30, 85, 250, 0.47);
 }
 
 .msg_field {
@@ -289,6 +287,28 @@ h1 {
   border: 2px solid rgba(30, 85, 250, 0.47);
 }
 
+@media (min-width: 700px) {
+  .message_utilisateur {
+    width: 600px;
+    height: 300px;
+  }
+  .msg_field {
+    width: 70%;
+    height: 75px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .message_utilisateur {
+    width: 800px;
+    height: 300px;
+  }
+  .msg_field {
+    width: 80%;
+    height: 75px;
+  }
+}
+
 /* Affichage du message */
 .message {
   display: -webkit-box;
@@ -305,8 +325,13 @@ h1 {
 }
 
 .message_unique {
-  width: 600px;
+  width: 350px;
   height: auto;
+  display: inline;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 40px;
   background-color: #FFF;
   -webkit-box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
@@ -323,8 +348,28 @@ h1 {
 }
 
 .message_unique img {
-  width: 600px;
+  width: 300px;
   height: auto;
+  display: block;
+  margin: auto;
+}
+
+@media (min-width: 700px) {
+  .message_unique {
+    width: 600px;
+  }
+  .message_unique img {
+    width: 550px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .message_unique {
+    width: 800px;
+  }
+  .message_unique img {
+    width: 600px;
+  }
 }
 
 /* Affichage formulaire commentaire */
@@ -332,14 +377,35 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .comm_field {
-  width: 50%;
+  width: 80%;
+}
+
+@media (min-width: 700px) {
+  .form_comm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .comm_field {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .comm_field {
+    width: 80%;
+  }
 }
 
 .insc_ok {
@@ -356,7 +422,7 @@ h1 {
   color: #227093;
 }
 
-/* Bouton envoyer du formulaire */
+/* Zone index */
 .btn {
   width: 40%;
   padding: 0.5rem 1rem;
@@ -374,40 +440,7 @@ h1 {
   background-color: #0c2461;
 }
 
-.btn_ajouter {
-  width: 30%;
-  padding: 0.5rem 1rem;
-  font-size: 1.1rem;
-  background-color: #4a69bd;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: #FFF;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.btn_ajouter:hover {
-  background-color: #0c2461;
-}
-
-.btn_publier {
-  width: 30%;
-  padding: 0.5rem 1rem;
-  font-size: 1.1rem;
-  background-color: #4a69bd;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: #FFF;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.btn_publier:hover, .btn_publier_comm:hover {
-  background-color: #f13a43;
-}
-
+/* Zone profil */
 .btn_sup {
   width: 40%;
   padding: 0.5rem 1rem;
@@ -429,6 +462,7 @@ h1 {
   width: 40%;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
+  margin-top: 20px;
   background-color: #4a69bd;
   cursor: pointer;
   outline: none;
@@ -440,6 +474,24 @@ h1 {
 
 .btn_modif:hover {
   background-color: #0c2461;
+}
+
+/* Zone mur */
+.btn_publier {
+  width: 30%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: #4a69bd;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn_publier:hover, .btn_publier_comm:hover {
+  background-color: #f13a43;
 }
 
 .btn_supp_message, .btn_supp_comm {
@@ -459,7 +511,8 @@ h1 {
 .btn_publier_comm {
   width: 20%;
   height: 30px;
-  margin: auto 0;
+  margin: auto;
+  margin-bottom: 5px;
   font-size: 1.1rem;
   background-color: #4a69bd;
   cursor: pointer;
@@ -468,5 +521,13 @@ h1 {
   color: #FFF;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+@media (min-width: 700px) {
+  .btn_publier_comm {
+    width: 20%;
+    height: 30px;
+    margin: auto;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
