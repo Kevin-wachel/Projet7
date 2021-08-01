@@ -80,6 +80,9 @@ header i {
     font-size: 40px;
     padding-top: 15px;
   }
+  .logo {
+    height: 50px;
+  }
 }
 
 /* */
