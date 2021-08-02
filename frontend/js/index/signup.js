@@ -57,7 +57,12 @@ myButtonSubmit.addEventListener('click', function (event) {
                 console.log(response);
                 const body = await response.json();
                 console.log(body);
-                window.location.href = "confirm.html";
+                if (response.ok == true) {
+                    window.location.href = "confirm.html";
+                } else {
+                    alert("Email deja utilisé");
+                    location.reload();
+                }              
             }catch(e) {
                 console.log(e);
             }
