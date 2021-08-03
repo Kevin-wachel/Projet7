@@ -12,7 +12,7 @@ Le projet consiste à construire un réseau social interne pour les employés de
 ### Pour le Front :
 - Sass
 
-Installation
+## Installation
 
 Copier ce repository, puis :
 
