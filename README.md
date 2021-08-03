@@ -5,12 +5,12 @@ Le projet consiste à construire un réseau social interne pour les employés de
 
 ## Technologies utilisées :
 ### Pour le Back:
-NodeJS
-Express
-mySql
+- NodeJS
+- Express
+- mySql
 
 ### Pour le Front :
-Sass
+- Sass
 
 Installation
 
