@@ -1,15 +1,15 @@
 # Projet7
 
-Objectifs de la mission :
+# Objectifs de la mission :
 Le projet consiste à construire un réseau social interne pour les employés de Groupomania. Le but de cet outil est de faciliter les interactions entre collègues. Le département RH de Groupomania a laissé libre cours à son imagination pour les fonctionnalités du réseau et a imaginé plusieurs briques pour favoriser les échanges entre collègues.
 
-Technologies utilisées :
+# Technologies utilisées :
 Pour le Back:
 NodeJS
 Express
 mySql
 
-Pour le Front :
+# Pour le Front :
 Sass
 
 Installation
@@ -18,7 +18,7 @@ Copier ce repository, puis :
 
 Créer la base de donnée database_developpement en renseignent vos identifiants, vous pouvez utiliser vos propres identifiant mais il faudra changer le fichier .env.
 
-Fichier .env :
+# Fichier .env :
 
 DB_NAME = database_development
 DB_HOST = 127.0.0.1
