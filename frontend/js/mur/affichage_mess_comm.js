@@ -41,14 +41,18 @@ const messageEtCommentaire = async function() {
 
         myH3Message.textContent = body[0].results[i].username;
         myMessage.textContent = body[0].results[i].contentMessage;
-        myLien.setAttribute('src', body[0].results[i].attachment);
+        
         myButtonDeleteMessage.innerHTML = '<i class="fas fa-times"></i>';
         myButtonDeleteMessage.title = 'Supprimer';
 
         myLi.appendChild(myButtonDeleteMessage);
         myLi.appendChild(myH3Message);
         myLi.appendChild(myMessage);
-        myLi.appendChild(myLien);
+        if (body[0].results[i].attachment != "") {
+            myLien.setAttribute('src', body[0].results[i].attachment);
+            myLien.setAttribute('title', "Image");
+            myLi.appendChild(myLien);
+        }
         myLi.appendChild(myHr);
 
         ul.appendChild(myLi);
@@ -78,7 +82,7 @@ const messageEtCommentaire = async function() {
             myLi.appendChild(myHr2);
 
             // Supprimer le commentaire
-            if (body[0].results[i].isAdmin === 1 || body[0].results[i].userId === parseJwt(token).userId) {
+            if (parseJwt(token).isAdmin == 1 || body[0].results[i].userId === parseJwt(token).userId) {
                 myButtonDeleteCommentaire.addEventListener('click', function (event) {
                     event.preventDefault()
     
@@ -170,8 +174,8 @@ const messageEtCommentaire = async function() {
             
         });
         
-        // Supprimer le message
-        if (body[0].results[i].isAdmin === 1/*Le probleme se situe ici*/  || body[0].results[i].userId === parseJwt(token).userId) {
+        // Supprimer le message 
+        if (parseJwt(token).isAdmin == 1 ||body[0].results[i].userId === parseJwt(token).userId) {
             myButtonDeleteMessage.addEventListener('click', function (event) {
                 event.preventDefault()
     
