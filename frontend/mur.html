@@ -12,7 +12,7 @@
     <body>
         <!-- En tête du site -->
         <header>
-            <a href="./mur.html" title="Logo de Groupomania"><img src="./image/icon-left-font.png" class="logo"/></a>
+            <a href="./mur.html" title="Logo de Groupomania"><img src="./image/icon-left-font.png" class="logo" alt="logo"/></a>
             <ul>
                 <li>
                     <a class="profil" href="./profil.html" title="Profil" aria-label="Profil"><i class="fas fa-user-circle"></i></a>
@@ -36,8 +36,8 @@
                 <!-- Partie envoie message -->
                 <div>
                     <form class="message_utilisateur">
-                        <label><h3>Votre message : <textarea class="msg_field" placeholder="Votre message" title="Zone du message"></textarea></h3></label>
-                        <label><h3>Votre lien : <input type="file" class="lien"></h3></label>
+                        <h3>Votre message : <textarea class="msg_field" placeholder="Votre message" title="Zone du message"></textarea></h3>
+                        <h3>Votre lien : <input type="file" class="lien"></h3>
                         <button class="btn_publier" title="Publier">Publier</button>
                     </form>
                 </div>
@@ -68,9 +68,9 @@
             
         </footer>
 
-    </body>
+        <script src="./js/mur/post_message.js"></script>
+        <script src="./js/mur/affichage_mess_comm.js"></script>
 
-    <script type="text/javascript" src="./js/mur/post_message.js"></script>
-    <script type="text/javascript" src="./js/mur/affichage_mess_comm.js"></script>
+    </body>
 
 </html>

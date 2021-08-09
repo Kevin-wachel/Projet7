@@ -171,7 +171,7 @@ const messageEtCommentaire = async function() {
         });
         
         // Supprimer le message
-        if (body[0].results[i].isAdmin === 1 || body[0].results[i].userId === parseJwt(token).userId) {
+        if (body[0].results[i].isAdmin === 1/*Le probleme se situe ici*/  || body[0].results[i].userId === parseJwt(token).userId) {
             myButtonDeleteMessage.addEventListener('click', function (event) {
                 event.preventDefault()
     

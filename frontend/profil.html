@@ -12,7 +12,7 @@
     <body>
         <!-- En tête du site -->
         <header>
-            <a href="./mur.html"><img src="./image/icon-left-font.png" class="logo"/></a>
+            <a href="./mur.html"><img src="./image/icon-left-font.png" class="logo" alt="logo"/></a>
             <ul>
                 <li>
                     <a class="profil" href="./profil.html" title="Profil" aria-label="Profil"><i class="fas fa-user-circle"></i></a>
@@ -34,20 +34,19 @@
 
             <section>
                 <!-- Partie information utilisateur -->
+                <h2>Information</h2>
                 <div class="info_utilisateur">
                     <div class="info">
-                        <label>
-                            <p title="Nom">Nom d'utilisateur :</p>
-                            <textarea class="name_uti"></textarea>
-                        </label>
-                        <label>
-                            <p title="Email">Email de l'utilisateur :</p>
-                            <textarea class="email_uti"></textarea>
-                        </label>
-                        <label>
-                            <p title="Bio">Bio :</p>
-                            <textarea class="bio_uti"></textarea>
-                        </label>
+        
+                        <p title="Nom">Nom d'utilisateur :</p>
+                        <textarea class="name_uti"></textarea>
+                    
+                        <p title="Email">Email de l'utilisateur :</p>
+                        <textarea class="email_uti"></textarea>                   
+                    
+                        <p title="Bio">Bio :</p>
+                        <textarea class="bio_uti"></textarea>
+                        
                     </div>
                     <div class="info_btn">
                         <button class="btn_modif" title="Modifier mes informations">Modifier mes informations</button>
@@ -75,8 +74,8 @@
             
         </footer>
 
-    </body>
+        <script src="./js/profil.js"></script>
 
-    <script type="text/javascript" src="./js/profil.js"></script>
+    </body>
 
 </html>
